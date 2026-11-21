@@ -1,21 +1,21 @@
 # Project Board - Clinic EMR
 
-**Last Updated:** 2026-11-21  
+**Last Updated:** 2026-11-22  
 **Current Branch:** main  
 **Project Owner:** ANSVK  
-**Current Phase:** Planning (Milestone 2)
+**Current Phase:** Milestone 2 - Requirements (Active)
 
 ---
 
 ## 🎯 Current Focus
 
-**Sprint/Period:** Milestone 2 Planning  
-**Sprint Goal:** Plan Authentication System implementation
+**Sprint/Period:** Milestone 2 - Week 1  
+**Sprint Goal:** Complete authentication requirements and analysis
 
 **Today's Priority:**
-1. Review Milestone 2 plan
-2. Prepare for development kickoff (Jan 2027)
-3. Finalize authentication approach
+1. Start Issue #10: Gather authentication requirements
+2. Document security requirements
+3. Define authentication scope
 
 ---
 
@@ -24,10 +24,10 @@
 | Milestone | Status | Progress | Start | Target | Issues |
 |-----------|--------|----------|-------|--------|--------|
 | Milestone 1: Patient Module | ✅ Complete | 9/9 (100%) | 2026-11-15 | 2026-12-06 | #1-9 |
-| Milestone 2: Authentication | 🟡 Planning | 0/7 (0%) | 2027-01-17 | 2027-02-14 | #10-16 |
-| Milestone 3: RBAC | 🔴 Not Started | 0/0 (0%) | TBD | 2027-03-14 | None yet |
-| Milestone 4: Production Ready | 🔴 Not Started | 0/0 (0%) | TBD | 2027-04-07 | None yet |
-| Milestone 5: Visit Module | 🔴 Not Started | 0/0 (0%) | TBD | 2027-06-02 | None yet |
+| Milestone 2: Authentication | 🟡 In Progress | 0/7 (0%) | 2026-11-22 | 2026-12-06 | #10-16 |
+| Milestone 3: RBAC | 🔴 Not Started | 0/0 (0%) | TBD | TBD | None yet |
+| Milestone 4: Production Ready | 🔴 Not Started | 0/0 (0%) | TBD | TBD | None yet |
+| Milestone 5: Visit Module | 🔴 Not Started | 0/0 (0%) | TBD | TBD | None yet |
 
 **Overall Progress:** 9 of 16+ issues complete (56% of planned work)
 
@@ -35,10 +35,12 @@
 
 ## 📋 Active Issues
 
-### Milestone 2: Authentication System (Planning)
+### Milestone 2: Authentication System (In Progress)
+
+**Starting Today:**
+- #10: Requirements - Authentication (🟡 Starting)
 
 **To Start:**
-- #10: Requirements - Authentication (🔴 To Do)
 - #11: Analysis - Authentication Impact (🔴 To Do)
 - #12: Design - Authentication (🔴 To Do)
 - #13: Implementation - Authentication (🔴 To Do)
@@ -47,7 +49,7 @@
 - #16: Milestone 2 Review (🔴 To Do)
 
 **Blocked:** None  
-**In Progress:** None
+**In Progress:** #10
 
 ---
 
@@ -72,19 +74,14 @@
 
 ## 🎯 Upcoming Milestones
 
-### Milestone 3: RBAC - Staff Roles (Feb-Mar 2027)
-**Planned Start:** 2027-02-15  
-**Target:** 2027-03-14  
+### Milestone 3: RBAC - Staff Roles (After M2)
+**Planned Start:** After M2 completion  
 **Goal:** Implement role-based access control for 6 staff roles (Manager, Doctor, Nurse, Pharmacist, Receptionist, Peer Counselor)
 
-### Milestone 4: Production Readiness & White-Label (Mar-Apr 2027)
-**Planned Start:** 2027-03-15  
-**Target:** 2027-04-07  
+### Milestone 4: Production Readiness & White-Label (Q1 2027)
 **Goal:** Add HTTPS/TLS, monitoring, deployment automation, and white-label configuration system
 
-### Milestone 5: Visit/Encounter Module (Apr-Jun 2027)
-**Planned Start:** 2027-04-08  
-**Target:** 2027-06-02  
+### Milestone 5: Visit/Encounter Module (Q2 2027)
 **Goal:** Implement clinical visit tracking, referencing stable patient IDs from Milestone 1
 
 ---
@@ -111,8 +108,8 @@
 
 | Indicator | Status | Notes |
 |-----------|--------|-------|
-| Schedule | 🟢 On Track | Milestone 1 completed ahead of schedule; M2 planned |
-| Quality | 🟢 Good | 92.5% pass rate, zero blocking issues |
+| Schedule | 🟢 On Track | M2 started on schedule (Nov 22); 2-week timeline |
+| Quality | 🟢 Good | M1: 92.5% pass rate, zero blocking issues |
 | Scope | 🟢 Stable | M2 scope defined; RBAC separated into M3 |
 | Morale | 🟢 High | Good progress, systematic approach working |
 | Technical Debt | 🟡 Low | 3 minor UX bugs from M1 (documented, not blocking) |
@@ -131,6 +128,11 @@
 - **Rationale:** Keep M2 focused on authentication infrastructure; add role complexity in M3
 - **Impact:** Cleaner milestone boundaries, easier testing
 
+**Decision #2:** Compress M2 timeline to 2 weeks
+- **Date:** 2026-11-22
+- **Rationale:** User directive to accelerate delivery
+- **Impact:** Faster time-to-production; maintain all SDLC phases with reduced duration
+
 ---
 
 ## 🎉 Recent Achievements
@@ -140,22 +142,22 @@
 - ✅ **Cross-Platform Validated** - Works identically on Windows and Ubuntu
 - ✅ **Professional Documentation** - 50,000+ lines across 40+ files
 - ✅ **Methodology Established** - SDLC process documented and reusable
+- ✅ **Milestone 2 Started** (2026-11-22) - Authentication system work begins
 
 ---
 
 ## 🔮 Looking Ahead
 
-**Next 3 Months (Dec 2026 - Feb 2027):**
-1. **December 2026:** Planning phase, prep for M2 kickoff
-2. **January 2027:** Execute Milestone 2 (Authentication)
-3. **February 2027:** Complete M2, start Milestone 3 (RBAC)
+**Next 2 Weeks (Nov 22 - Dec 6, 2026):**
+- **Week 1:** Requirements, Analysis, Design phases
+- **Week 2:** Implementation, Testing, Documentation, Review
 
-**Key Milestones in 2027:**
-- Q1: Authentication + RBAC complete
-- Q2: Production readiness + Visit module
-- Q3: Full EMR functionality with clinical data
+**Key Milestones Ahead:**
+- Dec 6: Complete Milestone 2 (Authentication)
+- Q1 2027: Milestone 3 (RBAC) + Milestone 4 (Production Ready + White-Label)
+- Q2 2027: Full EMR functionality with clinical data (Visit module)
 
 ---
 
-**Last Review:** 2026-11-21  
-**Next Review:** When Milestone 2 kicks off (2027-01-17)
+**Last Review:** 2026-11-22  
+**Next Review:** 2026-12-06 (Milestone 2 completion)

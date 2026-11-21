@@ -2,8 +2,8 @@
 
 **Status:** 🔴 Not Started  
 **Branch:** main  
-**Start Date:** 2027-01-17  
-**Target Date:** 2027-02-14  
+**Start Date:** 2026-11-22  
+**Target Date:** 2026-12-06  
 **Completion Date:** (when done)  
 **Owner:** ANSVK
 
@@ -76,39 +76,36 @@ Implement staff authentication system to secure the EMR application before produ
 ## Timeline
 
 **Phase 1: Requirements & Analysis**
-- **Start:** 2027-01-17 (Week 1, Days 1-2)
-- **Duration:** 5 days
+- **Start:** 2026-11-22 (Week 1, Days 1-2)
+- **Duration:** 2 days
 - **Issues:** #10 (Requirements), #11 (Analysis)
 - **Deliverables:** Requirements doc, analysis docs, decision record
 
 **Phase 2: Design**
-- **Start:** 2027-01-24 (Week 2)
-- **Duration:** 5 days
+- **Start:** 2026-11-26 (Week 1, Days 3-4)
+- **Duration:** 2 days
 - **Issue:** #12 (Design)
 - **Deliverables:** Architecture, schema, API design
 
 **Phase 3: Implementation**
-- **Start:** 2027-01-31 (Week 3-4)
-- **Duration:** 10 days
+- **Start:** 2026-11-28 (Week 2, Days 1-4)
+- **Duration:** 4 days
 - **Issue:** #13 (Implementation)
 - **Deliverables:** Code, tests, migrations
 
 **Phase 4: Testing**
-- **Start:** 2027-02-10 (Week 5)
-- **Duration:** 3 days
+- **Start:** 2026-12-04 (Week 2, Day 5)
+- **Duration:** 1 day
 - **Issue:** #14 (Testing)
 - **Deliverables:** Test plan, UAT scripts, results
 
 **Phase 5: Documentation & Review**
-- **Start:** 2027-02-13 (Week 6)
+- **Start:** 2026-12-05 (Week 2, Day 6)
 - **Duration:** 2 days
 - **Issues:** #15 (Documentation), #16 (Review)
 - **Deliverables:** Setup guide, milestone review
 
-**Target Completion:** 2027-02-14 (4 weeks)
-
----
-
+**Target Completion:** 2026-12-06 (2 weeks)
 ## Deliverables
 
 ### PM Repository
@@ -189,7 +186,7 @@ Implement staff authentication system to secure the EMR application before produ
 
 ## Notes
 
-**2027-01-17:** Milestone 2 planning complete. This milestone focuses solely on authentication infrastructure. RBAC (6 staff roles) will be Milestone 3. This separation keeps the milestone focused and allows authentication to be thoroughly tested before adding role complexity.
+**2026-11-22:** Milestone 2 planning complete. This milestone focuses solely on authentication infrastructure. RBAC (6 staff roles) will be Milestone 3. This separation keeps the milestone focused and allows authentication to be thoroughly tested before adding role complexity.
 
 **Key Decisions Pending:**
 - Session storage approach (in-memory vs database vs Redis)
@@ -231,4 +228,8 @@ Implement staff authentication system to secure the EMR application before produ
 ## Status History
 
 - 2026-11-21: Created (🔴 Not Started)
+- 2026-11-22: Timeline adjusted to 2 weeks (Nov 22 - Dec 6, 2026)
+- 2026-11-22: Timeline adjusted to 2 weeks (Nov 22 - Dec 6, 2026) (🔴 Not Started)
 - (To be updated as work progresses)
+
+**2026-11-22:** Timeline adjusted to 2 weeks (Nov 22 - Dec 6, 2026) per user directive. Compressed schedule maintains all SDLC phases with reduced duration per phase.
