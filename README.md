@@ -1,1065 +1,289 @@
 # Clinic EMR - Project Management Methodology
 
-**Version:** 1.0  
-**Last Updated:** 2026-11-21  
-**For:** AI Agents, Developers, and Project Collaborators
+**Version:** 1.1 | **Updated:** 2026-11-25 | **For:** AI Agents, Developers, Collaborators
 
 ---
 
-## 📋 For AI Agents: Read This First
+## 📋 AI Agents: Read First
 
-**Before starting any work on the Clinic EMR project, read this document completely.**
+**Read this document completely before starting any work.**
 
-This document explains:
-- My development methodology (SDLC-based)
-- Repository structure (two separate repos)
-- Documentation standards (where files go)
-- Workflow process (step-by-step)
-- Quality expectations (what I require)
+**Contents:** Development methodology (SDLC), repository structure, documentation standards, workflow process, quality expectations.
 
-**Following this methodology is mandatory for all work.**
+**Following this methodology is mandatory.**
 
 ---
 
-## 🎯 Purpose of This Repository
+## 🎯 Repository Purpose
 
-**Repository Name:** \`clinic-emr-pm\`  
-**Purpose:** Project Management workspace for Clinic EMR development
+**Name:** `clinic-emr-pm`  
+**Purpose:** PM workspace for Clinic EMR development
 
-**What's tracked here:**
-- Milestones (planning and reviews)
-- Issues (detailed task tracking)
-- Decisions (architectural and strategic choices)
-- Meetings (notes and action items)
-- Project board (overall status dashboard)
-
-**What's NOT here:**
-- Source code (in \`clinic-emr\` repo)
-- Technical documentation (in \`clinic-emr\` repo)
-- Test results (in \`clinic-emr\` repo)
+**Tracked:** Milestones, issues, decisions, meetings, project board  
+**Not tracked:** Source code, technical docs, test results (in `clinic-emr` repo)
 
 ---
 
-## 🏗️ My Development Philosophy
+## 🏗️ Development Philosophy
 
-### Core Principles
-
-**1. Process Over Speed**
-- Follow SDLC systematically
-- Never skip phases to save time
-- Document before implementing
-- Quality over rushing
-
-**2. Documentation is Mandatory**
-- Every feature has requirements
-- Every decision is recorded
-- Every milestone has review
-- Future me needs to understand why
-
-**3. Separation of Concerns**
-- PM tracking separate from code
-- Process documentation separate from technical docs
-- Planning separate from execution
-
-**4. Discipline Equals Freedom**
-- Structure enables scaling
-- Templates ensure consistency
-- Standards prevent chaos
-- Methodology is reusable
+**Core Principles:**
+1. **Process Over Speed** - Follow SDLC systematically, never skip phases, document before implementing
+2. **Documentation Mandatory** - Every feature has requirements, every decision recorded, every milestone reviewed
+3. **Separation of Concerns** - PM tracking ≠ code, process docs ≠ technical docs, planning ≠ execution
+4. **Discipline = Freedom** - Structure enables scaling, templates ensure consistency, standards prevent chaos
 
 ---
 
 ## 📂 Two-Repository Structure
 
-### Repository 1: `clinic-emr` (Technical/Product)
+### `clinic-emr` (Technical/Product) - Private
+**URL:** https://github.com/Awlsway/clinic-emr  
+**Contains:** Source code, technical docs (`requirements/`, `analysis/`, `design/`, `testing/`, `deployment/`), tests, build scripts  
+**Audience:** Developers, users, clinics
 
-**URL:** `https://github.com/Awlsway/clinic-emr`  
-**Purpose:** The actual EMR system
+### `clinic-emr-pm` (Project Management) - Public
+**URL:** https://github.com/Awlsway/clinic-emr-pm  
+**Local:** `D:\Native\.pm\`  
+**Contains:** `overview/`, `milestones/`, `issues/`, `decisions/`, `meetings/`, templates  
+**Audience:** PMs, stakeholders, process learners, AI agents
 
-**Contains:**
-- Source code (Go application)
-- Technical documentation (`docs/`)
-  - `requirements/` - Feature requirements
-  - `analysis/` - Impact analysis and options
-  - `design/` - Architecture and design specs
-  - `testing/` - Test plans and results
-  - `deployment/` - Setup guides and procedures
-  - `project-management/` - Milestone reviews
-- Tests
-- Build scripts
-- README (product overview)
-
-**Audience:** Developers, users, clinics, technical contributors
+**Why Two?** Clean product repo, reusable PM structure, different audiences, independent evolution, portfolio showcase
 
 ---
 
-### Repository 2: `clinic-emr-pm` (Project Management)
+## 🔄 SDLC Phases (Never Skip)
 
-**URL:** `https://github.com/Awlsway/clinic-emr-pm`  
-**Location:** `D:\Native\.pm\` (local)  
-**Purpose:** How we manage building the EMR
+| Phase | Deliverables (PM Repo) | Deliverables (Tech Repo) | Key Questions |
+|-------|------------------------|--------------------------|---------------|
+| **1. Requirements** | `issues/#NNN_MS*_SDLC1_*` | `docs/requirements/*.md` | What problem? Success criteria? Scope? Constraints? |
+| **2. Analysis** ⚠️ | `issues/#NNN_MS*_SDLC2_*`<br>`decisions/#NNN_MS*_*.md` | `docs/analysis/*-impact.md`<br>`docs/analysis/*-options.md` | Current state? 3-4 approaches? Pros/cons? Risks? Effort? |
+| **3. Design** | `issues/#NNN_MS*_SDLC3_*` | `docs/design/*-architecture.md`<br>`docs/design/*-schema.md`<br>`docs/design/*-api.md` | How it works? Architecture? DB/API changes? Integration? |
+| **4. Implementation** | `issues/#NNN_MS*_SDLC4_*` | Code + `docs/deployment/*-setup.md` | Code follows design? Tests written? Docs complete? |
+| **5. Testing** | `issues/#NNN_MS*_SDLC5_*` | `docs/testing/*-test-plan.md`<br>`docs/testing/uat-*.md`<br>`docs/testing/*-results.md` | Test plan exists? All cases documented? Results recorded? |
+| **6. Deployment** | `issues/#NNN_MS*_SDLC6_*` | `docs/deployment/*-setup.md`<br>`docs/deployment/*-troubleshooting.md` | Setup guide? Troubleshooting? Migration? |
+| **7. Review** | `issues/#NNN_MS*_SDLC7_*`<br>`milestones/milestone-N-review.md` | - | What worked? What improve? Tech debt? Lessons? |
 
-**Contains:**
-- `overview/` - Project board and status dashboard
-- `milestones/` - Milestone planning and retrospectives
-- `issues/` - Detailed issue tracking (one file per issue)
-- `decisions/` - Decision records (ADRs - Architecture Decision Records)
-- `meetings/` - Meeting notes and action items
-- Templates for all document types
-
-**Audience:** Project managers, stakeholders, process learners, AI agents
+**⚠️ Analysis Phase:** Mandatory - prevents wrong approach, missing risks, underestimating effort.
 
 ---
 
-### Why Two Repositories?
+## 📝 File Naming Conventions (Milestone 3+)
 
-**Separation Benefits:**
-1. ✅ Clean product repo (no PM "meta" files)
-2. ✅ Reusable PM structure (template for future projects)
-3. ✅ Different audiences (developers vs managers)
-4. ✅ Independent evolution (PM improves without cluttering product)
-5. ✅ Portfolio showcase (demonstrates PM skills separately)
+**PM Repo Issues:**
+```
+#[num]_MS[milestone]_SDLC[phase]_[phase-name]_[seq]_[description].md
+```
+- `#015` = Issue number
+- `MS3` = Milestone 3
+- `SDLC1` = Phase (1-7)
+- `requirements` = Phase name (lowercase)
+- `01` = Sequence within phase
+- `rbac-overview` = Description (kebab-case)
 
-**Cross-Linking:**
-- PM issues reference technical repo commits/docs
-- Technical docs reference PM issues/milestones
-- Both READMEs link to each other
+**SDLC Phase Names:**
+`requirements`, `analysis`, `design`, `implementation`, `testing`, `deployment`, `review`
 
----
+**Examples:**
+```
+#015_MS3_SDLC1_requirements_01_rbac-overview.md
+#018_MS3_SDLC2_analysis_01_current-state.md
+#021_MS3_SDLC3_design_01_database-schema.md
+#024_MS3_SDLC4_implementation_01_migrations.md
+#027_MS3_SDLC5_testing_01_unit-tests.md
+#030_MS3_SDLC6_deployment_01_setup-guide.md
+#033_MS3_SDLC7_review_01_retrospective.md
+```
 
-## 🔄 SDLC Phases (The Seven Phases)
+**PM Repo Decisions:**
+```
+#[num]_MS[milestone]_[decision-topic].md
+Example: #003_MS3_rbac-permission-model.md
+```
 
-**NEVER skip phases. Always follow this order:**
+**PM Repo Milestones:**
+```
+milestone-[N].md              (Planning)
+milestone-[N]-review.md       (Retrospective)
+```
 
-### Phase 1: Requirements
-**What:** Define what needs to be built  
-**Deliverables:**
-- PM repo: `issues/NNN-requirements-feature.md`
-- Technical repo: `docs/requirements/feature.md`
+**Tech Repo (Simple Names - No Prefix):**
+```
+docs/requirements/rbac.md
+docs/analysis/rbac-impact.md, rbac-options.md
+docs/design/rbac-architecture.md, rbac-schema.md, rbac-middleware.md
+docs/testing/rbac-test-plan.md, uat-rbac.md, rbac-test-results.md
+docs/deployment/rbac-setup-guide.md, rbac-troubleshooting.md
+```
 
-**Questions answered:**
-- What problem are we solving?
-- What does success look like?
-- What's in scope / out of scope?
-- What are the constraints?
-
----
-
-### Phase 2: Analysis ⚠️ NEVER SKIP THIS
-**What:** Analyze current state, evaluate options, assess impact  
-**Deliverables:**
-- PM repo: `issues/NNN-analyze-feature-impact.md`
-- PM repo: `decisions/NNN-chosen-approach.md`
-- Technical repo: `docs/analysis/feature-impact.md`
-- Technical repo: `docs/analysis/feature-options.md`
-
-**Questions answered:**
-- What's the current state?
-- What are 3-4 possible approaches?
-- What are pros/cons of each?
-- What's the recommended approach and why?
-- What are the risks?
-- How much effort required?
-
-**Why mandatory:** Prevents choosing wrong approach, missing risks, underestimating effort
-
----
-
-### Phase 3: Design
-**What:** Design the solution in detail  
-**Deliverables:**
-- PM repo: `issues/NNN-design-feature.md`
-- Technical repo: `docs/design/feature-architecture.md`
-- Technical repo: `docs/design/feature-schema.md` (if database)
-- Technical repo: `docs/design/feature-api.md` (if HTTP endpoints)
-
-**Questions answered:**
-- How will it work?
-- What's the architecture?
-- What changes to database/API?
-- How does it integrate with existing system?
+**Old Convention (MS1-2 Reference Only):**
+```
+NNN-phase-feature-name.md
+Example: 001-requirements-authentication.md
+```
 
 ---
 
-### Phase 4: Implementation
-**What:** Build the solution  
-**Deliverables:**
-- PM repo: `issues/NNN-implement-feature.md`
-- Technical repo: Code changes
-- Technical repo: `docs/deployment/feature-setup-guide.md`
+## 🔄 Commit & Push Strategy (Hybrid Approach)
 
-**Requirements:**
-- Code follows design
-- Tests written alongside code
-- Documentation written before closing issue
+**Commit:** After each SDLC phase completes (local checkpoint)  
+**Push:** At 3 breakpoints (backup to GitHub)
 
----
+**Breakpoints:**
+1. **After Planning** (Phases 1-3) - Requirements, Analysis, Design complete
+2. **After Execution** (Phases 4-5) - Implementation, Testing complete
+3. **After Milestone** (Phases 6-7) - Deployment, Review complete
 
-### Phase 5: Testing
-**What:** Verify the solution works  
-**Deliverables:**
-- PM repo: `issues/NNN-test-feature.md`
-- Technical repo: `docs/testing/feature-test-plan.md`
-- Technical repo: `docs/testing/uat-feature.md` (UAT scripts)
-- Technical repo: `docs/testing/feature-test-results.md`
+**Commit Format:**
+```
+docs(MSX): complete SDLC Phase N - Phase Name
 
-**Requirements:**
-- Test plan before execution
-- All test cases documented
-- Results recorded (pass/fail with evidence)
-- Bugs filed as separate issues
+- Deliverable 1
+- Deliverable 2
+```
 
----
+**Tech Repo Commit Format:**
+```
+feat(feature): implement feature name
 
-### Phase 6: Deployment
-**What:** Ship the solution and document usage  
-**Deliverables:**
-- PM repo: `issues/NNN-document-feature.md`
-- Technical repo: `docs/deployment/feature-setup-guide.md`
-- Technical repo: `docs/deployment/feature-troubleshooting.md`
+- Change 1
+- Change 2
 
-**Requirements:**
-- Setup guide for users
-- Troubleshooting common issues
-- Migration guide (if breaking changes)
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
+```
+
+**Workflow:**
+```
+Phase 1 → commit → Phase 2 → commit → Phase 3 → commit → PUSH
+Phase 4 → commit → Phase 5 → commit → PUSH
+Phase 6 → commit → Phase 7 → commit → PUSH
+```
 
 ---
 
-### Phase 7: Review
-**What:** Retrospective and lessons learned  
-**Deliverables:**
-- PM repo: `issues/NNN-milestone-review.md`
-- PM repo: `milestones/milestone-N-review.md`
+## 📂 Repository File Structure
 
-**Questions answered:**
-- What went well?
-- What could improve?
-- Any technical debt created?
-- Lessons learned for next milestone?
-
----
-
-## 📝 Documentation Standards
-
-### PM Repository File Structure
-
+**PM Repo:**
 ```
 clinic-emr-pm/
-├── README.md                    (this file)
-│
+├── README.md
 ├── overview/
-│   ├── project-board.md              (current status dashboard)
-│   └── _PROJECT-BOARD-TEMPLATE.md    (template)
-│
+│   ├── project-board.md
+│   └── _PROJECT-BOARD-TEMPLATE.md
 ├── milestones/
-│   ├── milestone-1.md                (M1 plan)
-│   ├── milestone-1-review.md         (M1 retrospective)
-│   ├── milestone-2.md                (M2 plan)
-│   └── _TEMPLATE.md                  (template)
-│
+│   ├── milestone-N.md
+│   ├── milestone-N-review.md
+│   └── _TEMPLATE.md
 ├── issues/
-│   ├── 001-create-uat-scripts.md    (completed)
-│   ├── 002-execute-uat.md           (completed)
-│   ├── 010-requirements-feature.md  (example)
-│   ├── 011-analyze-feature.md       (example)
-│   └── _TEMPLATE.md                 (template)
-│
+│   ├── #NNN_MSX_SDLCX_phasename_NN_description.md
+│   └── _TEMPLATE.md
 ├── decisions/
-│   ├── 001-decision-topic.md        (example)
-│   └── _TEMPLATE.md                 (template)
-│
+│   ├── #NNN_MSX_decision-topic.md
+│   └── _TEMPLATE.md
 └── meetings/
-    ├── 2027-01-15-planning.md       (example)
-    └── _TEMPLATE.md                 (template)
+    ├── YYYY-MM-DD-topic.md
+    └── _TEMPLATE.md
 ```
 
----
-
-### Technical Repository File Structure
-
+**Tech Repo:**
 ```
 clinic-emr/
 └── docs/
-    ├── requirements/
-    │   ├── patient-module.md
-    │   └── feature-name.md
-    │
-    ├── analysis/              ⚠️ Don't skip this folder
-    │   ├── current-state.md
-    │   ├── feature-impact.md
-    │   └── feature-options.md
-    │
-    ├── design/
-    │   ├── feature-architecture.md
-    │   ├── feature-schema.md
-    │   └── feature-api.md
-    │
-    ├── testing/
-    │   ├── feature-test-plan.md
-    │   ├── uat-feature.md
-    │   └── feature-test-results.md
-    │
-    └── deployment/
-        ├── feature-setup-guide.md
-        └── feature-troubleshooting.md
-```
-
----
-
-### File Naming Conventions
-
-**PM Repository:**
-
-**Issues:** `NNN-phase-feature-name.md`
-- `001-requirements-authentication.md`
-- `002-analyze-authentication-impact.md`
-- `003-design-authentication.md`
-- `010-requirements-white-label.md`
-- `011-analyze-white-label-impact.md`
-
-**Milestones:** `milestone-N.md` and `milestone-N-review.md`
-- `milestone-1.md` (plan)
-- `milestone-1-review.md` (retrospective)
-- `milestone-2.md` (plan)
-
-**Decisions:** `NNN-decision-topic.md`
-- `001-white-label-config-approach.md`
-- `002-authentication-library-choice.md`
-- `003-database-migration-strategy.md`
-
-**Meetings:** `YYYY-MM-DD-meeting-topic.md`
-- `2027-01-15-milestone-2-kickoff.md`
-- `2027-02-01-weekly-standup.md`
-
-**Technical Repository:**
-
-**Requirements:** `feature-name.md`
-- `patient-module.md`
-- `white-label.md`
-- `authentication.md`
-
-**Analysis:** `feature-name-impact.md` and `feature-name-options.md`
-- `white-label-impact.md`
-- `white-label-options.md`
-
-**Design:** `feature-name-architecture.md`, `feature-name-schema.md`, etc.
-- `authentication-architecture.md`
-- `patient-schema.md`
-
-**Testing:** `feature-test-plan.md`, `uat-feature.md`, `feature-test-results.md`
-- `white-label-test-plan.md`
-- `uat-white-label.md`
-- `white-label-test-results.md`
-
----
-
-
----
-
-## 📋 Template Formats (Examples)
-
-### Milestone Format
-
-```markdown
-# Milestone X: [Milestone Name]
-
-**Status:** 🔴 Not Started / 🟡 In Progress / ✅ Complete  
-**Branch:** [e.g., main, develop, milestone/2-visit-module]  
-**Start Date:** YYYY-MM-DD  
-**Target Date:** YYYY-MM-DD  
-**Completion Date:** YYYY-MM-DD (when done)  
-**Owner:** [Your Name]
-
-## Objective
-[Clear statement of what this milestone aims to achieve]
-
-## Success Criteria
-- [ ] [Measurable outcome 1]
-- [ ] [Measurable outcome 2]
-- [ ] [Measurable outcome 3]
-- [ ] Documentation complete
-- [ ] Production ready
-
-## Scope
-
-**In Scope:**
-- [Feature/deliverable 1]
-- [Feature/deliverable 2]
-
-**Out of Scope:**
-- [What's explicitly NOT included]
-- [Future work for next milestone]
-
-## Issues
-
-| # | Issue | Status | Progress | Owner |
-|---|-------|--------|----------|-------|
-| #X | [Issue title] | 🔴 To Do | 0% | [Name] |
-| #Y | [Issue title] | 🟡 In Progress | 50% | [Name] |
-| #Z | [Issue title] | ✅ Done | 100% | [Name] |
-
-## Timeline
-- **Start:** YYYY-MM-DD
-- **Milestones:** [Key dates]
-- **Target Completion:** YYYY-MM-DD
-
-## Deliverables
-- [Deliverable 1]
-- [Deliverable 2]
-
-## Risks
-
-| Risk | Severity | Probability | Mitigation |
-|------|----------|-------------|------------|
-| [Risk description] | High/Medium/Low | High/Medium/Low | [How to mitigate] |
-
-## Dependencies
-**External Dependencies:**
-- [e.g., Third-party API, hardware, etc.]
-
-**Milestone Dependencies:**
-- Milestone X must complete before this starts
-
-## Metrics
-**Key Performance Indicators:**
-- [Metric 1: e.g., Test pass rate target]
-- [Metric 2: e.g., Code coverage target]
-
-## Notes
-**YYYY-MM-DD:** [Milestone kickoff notes, decisions, changes]
-
-## Retrospective (Complete after milestone done)
-**What Went Well:**
-- [Success 1]
-
-**What Could Be Improved:**
-- [Challenge 1]
-
-**Lessons Learned:**
-- [Lesson 1]
-
-**Action Items for Next Milestone:**
-- [Action 1]
-
-## Status History
-- YYYY-MM-DD: Created (🔴 Not Started)
-- YYYY-MM-DD: Started (🟡 In Progress)
-- YYYY-MM-DD: Completed (✅ Complete)
-```
-
----
-
-### Issue Format
-
-```markdown
-# Issue #XXX: [Issue Title]
-
-**Status:** 🔴 To Do / 🟡 In Progress / ✅ Done / ⏸️ Blocked  
-**Branch:** [e.g., feature/visit-crud, bugfix/search-spaces, main]  
-**Milestone:** Milestone X  
-**Created:** YYYY-MM-DD  
-**Updated:** YYYY-MM-DD  
-**Assignee:** [Your Name]  
-**Priority:** High / Medium / Low  
-**Estimated Time:** [e.g., 2 weeks, 3 days, 4 hours]
-
-## Description
-[Brief description of what needs to be done and why]
-
-## Success Criteria
-- [ ] [Specific measurable outcome 1]
-- [ ] [Specific measurable outcome 2]
-- [ ] [Specific measurable outcome 3]
-- [ ] Documentation complete
-- [ ] Tests passing
-
-## Tasks
-- [ ] [Specific task 1]
-- [ ] [Specific task 2]
-- [ ] [Specific task 3]
-
-## Dependencies
-**Requires:**
-- Issue #XX: [Title] - [Status]
-
-**Blocks:**
-- Issue #YY: [Title]
-
-## Notes
-**YYYY-MM-DD:** [Note about progress, decisions, or blockers]
-
-## Decision Log
-**YYYY-MM-DD:** [Key decision made related to this issue]
-
-## Related Documents
-- [Link to related test scripts, design docs, etc.]
-
-## Status History
-- YYYY-MM-DD: Created (🔴 To Do)
-- YYYY-MM-DD: Started work (🟡 In Progress)
-- YYYY-MM-DD: Completed (✅ Done)
-```
-
----
-
-### Decision Record Format
-
-```markdown
-# Decision: [Decision Title]
-
-**Date:** YYYY-MM-DD  
-**Branch:** [branch-name]  
-**Decision Maker:** [Your Name]  
-**Status:** 🟡 Proposed / ✅ Approved / 🚀 Implemented  
-**Related Issue:** #XXX (if applicable)  
-**Related Milestone:** Milestone X (if applicable)
-
-## Context
-[Describe the situation that requires a decision. What problem are we solving?]
-
-## Options Considered
-
-### Option A: [Option Name]
-**Description:** [What this option involves]
-
-**Pros:**
-- [Advantage 1]
-- [Advantage 2]
-
-**Cons:**
-- [Disadvantage 1]
-- [Disadvantage 2]
-
-**Cost/Effort:** [Estimate]
-
-### Option B: [Option Name]
-**Description:** [What this option involves]
-
-**Pros:**
-- [Advantage 1]
-
-**Cons:**
-- [Disadvantage 1]
-
-**Cost/Effort:** [Estimate]
-
-### Option C: [Option Name]
-**Description:** [What this option involves]
-
-**Pros:**
-- [Advantage 1]
-
-**Cons:**
-- [Disadvantage 1]
-
-**Cost/Effort:** [Estimate]
-
-## Decision
-**Selected Option:** [Option X]
-
-**Rationale:** [Why this option was chosen over the others]
-
-## Impact
-**Affected Areas:**
-- [Area 1: e.g., Architecture]
-- [Area 2: e.g., Timeline]
-
-**Changes Required:**
-- [Change 1]
-- [Change 2]
-
-**Risks:**
-- [Risk 1]
-
-## Implementation Plan
-- [ ] [Step 1]
-- [ ] [Step 2]
-
-**Target Implementation Date:** YYYY-MM-DD
-
-## Follow-Up
-**Review Date:** YYYY-MM-DD  
-**Success Criteria:** [How we'll know this decision was good]
-
-## Notes
-[Additional context, discussions, or related information]
-
-## Status History
-- YYYY-MM-DD: Proposed
-- YYYY-MM-DD: Approved
-- YYYY-MM-DD: Implemented
-```
-
----
-
-### Meeting Notes Format
-
-```markdown
-# Meeting: [Meeting Title]
-
-**Date:** YYYY-MM-DD  
-**Time:** HH:MM - HH:MM  
-**Branch:** [current-branch]  
-**Type:** Planning / Review / Standup / Retrospective / Design / Decision  
-**Facilitator:** [Your Name]
-
-## Attendees
-
-**Present:**
-- [Name 1] - [Role]
-- [Name 2] - [Role]
-
-**Absent:**
-- [Name 3] - [Role]
-
-## Agenda
-1. [Topic 1]
-2. [Topic 2]
-3. [Topic 3]
-
-## Discussion
-
-### Topic 1: [Topic Title]
-**Summary:**
-[What was discussed]
-
-**Key Points:**
-- [Point 1]
-- [Point 2]
-
-**Questions Raised:**
-- [Question 1]
-
-### Topic 2: [Topic Title]
-**Summary:**
-[What was discussed]
-
-**Key Points:**
-- [Point 1]
-
-## Decisions Made
-
-| Decision | Owner | Due Date | Status |
-|----------|-------|----------|--------|
-| [Decision 1] | [Name] | YYYY-MM-DD | ✅ / 🟡 / 🔴 |
-| [Decision 2] | [Name] | YYYY-MM-DD | ✅ / 🟡 / 🔴 |
-
-## Action Items
-- [ ] [Action 1] - **Owner:** [Name] - **Due:** YYYY-MM-DD
-- [ ] [Action 2] - **Owner:** [Name] - **Due:** YYYY-MM-DD
-
-## Blockers / Issues
-- [Blocker 1] - **Impact:** [Description]
-- [Issue 1] - **Action:** [What needs to happen]
-
-## Next Steps
-1. [Next step 1]
-2. [Next step 2]
-
-**Next Meeting:** YYYY-MM-DD
-
-## Notes
-[Additional notes, context, or follow-up items]
-
-## Related Documents
-- Issue #XXX: [Link or reference]
-- Decision: [Link to decision document]
-- Milestone: [Link to milestone]
-```
-## 📄 Template Files Reference
-
-### Available Templates
-
-Use these template files when creating new documents:
-
-**Location:** Each folder contains \`_TEMPLATE.md\`
-
-- \`milestones/_TEMPLATE.md\` - Copy for new milestone plans
-- \`issues/_TEMPLATE.md\` - Copy for new issues
-- \`decisions/_TEMPLATE.md\` - Copy for new decision records
-- \`meetings/_TEMPLATE.md\` - Copy for new meeting notes
-- \`overview/_PROJECT-BOARD-TEMPLATE.md\` - Copy for project board
-
-### Usage
-
-```bash
-# Create new milestone
-cp milestones/_TEMPLATE.md milestones/milestone-5.md
-# Edit milestone-5.md with your content
-
-# Create new issue
-cp issues/_TEMPLATE.md issues/025-requirements-billing.md
-# Edit with your content
-
-# Create new decision
-cp decisions/_TEMPLATE.md decisions/005-payment-gateway-choice.md
-# Edit with your content
-```
-
-**Rule:** Always copy template, never edit template directly.
-
----
-
-## 🔨 Workflow Example: Building a New Feature
-
-### Example: Add "Visit/Encounter Module"
-
-**Timeline:** 4-6 weeks (Milestone 5)
-
----
-
-### Week 1: Requirements + Analysis
-
-**Day 1-2: Requirements**
-
-```bash
-# In PM repo
-cd D:/Native/.pm
-cp issues/_TEMPLATE.md issues/020-requirements-visit-module.md
-# Edit issue #20
-git add issues/020-requirements-visit-module.md
-git commit -m "Start Issue #20: Visit module requirements"
-git push
-
-# In technical repo
-cd D:/Native/clinic-emr
-# Create docs/requirements/visit-module.md
-git add docs/requirements/visit-module.md
-git commit -m "docs: add visit module requirements"
-git push
-
-# Back to PM repo
-# Update issue #20 status to "Complete"
-git commit -am "Close Issue #20: Requirements documented"
-git push
-```
-
-**Day 3-5: Analysis**
-
-```bash
-# In PM repo
-cp issues/_TEMPLATE.md issues/021-analyze-visit-module-impact.md
-# Edit issue #21
-git add issues/021-analyze-visit-module-impact.md
-git commit -m "Start Issue #21: Visit module impact analysis"
-git push
-
-# In technical repo
-# Create docs/analysis/visit-module-impact.md
-# Create docs/analysis/visit-module-options.md
-# Evaluate 3-4 approaches
-git add docs/analysis/
-git commit -m "docs: analyze visit module options"
-git push
-
-# In PM repo (after choosing approach)
-cp decisions/_TEMPLATE.md decisions/002-visit-module-approach.md
-# Document chosen approach
-git add decisions/002-visit-module-approach.md
-git commit -m "Decision #2: Visit module approach"
-git push
-
-# Close issue #21
-git commit -am "Close Issue #21: Analysis complete"
-git push
-```
-
----
-
-### Week 2: Design
-
-```bash
-# In PM repo
-cp issues/_TEMPLATE.md issues/022-design-visit-module.md
-git add issues/022-design-visit-module.md
-git commit -m "Start Issue #22: Visit module design"
-git push
-
-# In technical repo
-# Create docs/design/visit-module-architecture.md
-# Create docs/design/visit-module-schema.md
-# Create docs/design/visit-module-api.md
-git add docs/design/
-git commit -m "docs: design visit module architecture"
-git push
-
-# In PM repo
-git commit -am "Close Issue #22: Design complete"
-git push
-```
-
----
-
-### Week 3-4: Implementation
-
-```bash
-# In PM repo
-cp issues/_TEMPLATE.md issues/023-implement-visit-module.md
-git commit -m "Start Issue #23: Visit module implementation"
-git push
-
-# In technical repo
-# Code changes: internal/visit/*, cmd/emr/*, internal/web/*
-# Write docs/deployment/visit-module-setup-guide.md
-git add .
-git commit -m "feat: implement visit module
-
-- Add visit domain model
-- Add database schema and migrations
-- Add HTTP handlers and templates
-- Add setup documentation
-
-Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
-git push
-
-# In PM repo
-git commit -am "Close Issue #23: Implementation complete"
-git push
-```
-
----
-
-### Week 5: Testing
-
-```bash
-# In PM repo
-cp issues/_TEMPLATE.md issues/024-test-visit-module.md
-git commit -m "Start Issue #24: Visit module testing"
-git push
-
-# In technical repo
-# Create docs/testing/visit-module-test-plan.md
-# Create docs/testing/uat-visit-module.md
-# Execute tests, create docs/testing/visit-module-test-results.md
-git add docs/testing/
-git commit -m "docs: add visit module test plan and results"
-git push
-
-# In PM repo
-git commit -am "Close Issue #24: Testing complete"
-git push
-```
-
----
-
-### Week 6: Documentation + Review
-
-```bash
-# In PM repo
-cp issues/_TEMPLATE.md issues/025-document-visit-module.md
-git commit -m "Start Issue #25: Finalize visit module docs"
-git push
-
-# In technical repo
-# Finalize all documentation
-git commit -m "docs: finalize visit module documentation"
-git push
-
-# In PM repo
-git commit -am "Close Issue #25: Documentation complete"
-
-# Create milestone review
-cp issues/_TEMPLATE.md issues/026-milestone-5-review.md
-git commit -m "Start Issue #26: Milestone 5 review"
-
-# Write milestones/milestone-5-review.md
-git add milestones/milestone-5-review.md
-git commit -m "Complete Milestone 5 review"
-git push
-
-# Update project board
-# Edit overview/project-board.md
-git commit -am "Update project board: Milestone 5 complete"
-git push
+    ├── requirements/feature.md
+    ├── analysis/feature-impact.md, feature-options.md
+    ├── design/feature-architecture.md, feature-schema.md, feature-api.md
+    ├── testing/feature-test-plan.md, uat-feature.md, feature-results.md
+    └── deployment/feature-setup.md, feature-troubleshooting.md
 ```
 
 ---
 
 ## ✅ Quality Checklist
 
-### Before Closing ANY Issue
-
-- [ ] All tasks in issue checked off
+**Before Closing Any Issue:**
+- [ ] All tasks checked off
 - [ ] All deliverables created
 - [ ] Documentation written
-- [ ] Committed and pushed to appropriate repo(s)
-- [ ] Cross-links added (PM issue references technical docs)
-- [ ] Issue status updated to "Complete"
+- [ ] Committed and pushed to correct repo
+- [ ] Cross-links added
+- [ ] File naming convention followed
+- [ ] Issue status = Complete
 
-### Before Completing ANY Milestone
-
+**Before Completing Milestone:**
 - [ ] All issues closed
-- [ ] All SDLC phases completed (Requirements → Analysis → Design → Implementation → Testing → Deployment → Review)
-- [ ] Milestone review document written
+- [ ] All 7 SDLC phases complete
+- [ ] Milestone review written
 - [ ] Project board updated
-- [ ] Technical documentation complete
-- [ ] Code tagged/versioned (if applicable)
+- [ ] Technical docs complete
+- [ ] Code tagged/versioned
 
-### Before ANY Commit
-
-- [ ] Commit message clear and descriptive
-- [ ] Attribution added (Co-Authored-By) if AI-assisted
-- [ ] Correct repository (PM vs Technical)
-- [ ] Related issue number mentioned (optional but helpful)
-
----
-
-## ❌ What NOT to Do
-
-### Never Skip Analysis Phase
-
-**Wrong:**
-```
-Requirements → Design → Implementation
-```
-
-**Right:**
-```
-Requirements → Analysis → Design → Implementation
-```
-
-**Why:** Analysis prevents choosing wrong approach, missing risks, and underestimating effort.
+**Before Any Commit:**
+- [ ] Clear commit message
+- [ ] Co-Authored-By attribution (if AI-assisted)
+- [ ] Correct repository
+- [ ] Related issue referenced
 
 ---
 
-### Never Mix PM and Technical Docs
+## ❌ Never Do
 
-**Wrong:**
-- Put issue tracking in \`clinic-emr/docs/\`
-- Put technical design in \`clinic-emr-pm/issues/\`
-
-**Right:**
-- PM tracking: \`clinic-emr-pm\`
-- Technical docs: \`clinic-emr/docs/\`
-
----
-
-### Never Implement Without Design
-
-**Wrong:**
-- Start coding immediately after requirements
-
-**Right:**
-- Requirements → Analysis → Design → Implementation
+1. **Never skip Analysis** - Prevents wrong approach, missing risks, underestimating effort
+2. **Never mix PM and technical docs** - PM → `clinic-emr-pm`, Code/tech → `clinic-emr`
+3. **Never implement without design** - Requirements → Analysis → Design → Implementation
+4. **Never close issue without docs** - Code done + docs written + tests pass = close
+5. **Never push to wrong repo** - Check which repo before committing
+6. **Never guess format** - Copy template, follow naming conventions
 
 ---
 
-### Never Close Issue Without Documentation
+## 🤖 AI Agent Quick Reference
 
-**Wrong:**
-- Code is done → close issue
+**When user says "Build Feature X":**
+1. Read README (this doc)
+2. Confirm: "Following SDLC: Requirements → Analysis → Design → Implementation → Testing → Deployment → Review"
+3. Ask clarifying questions
+4. Create Phase 1 issue: `#NNN_MSX_SDLC1_requirements_01_feature-x.md`
+5. Write `docs/requirements/feature-x.md` (tech repo)
+6. Close Phase 1 issue
+7. Create Phase 2 issue: `#NNN_MSX_SDLC2_analysis_01_current-state.md`
+8. Continue through all 7 phases
 
-**Right:**
-- Code is done + docs written + tests pass → close issue
+**When user says "Skip Analysis":**
+"Analysis phase is mandatory per methodology. It prevents wrong approach and missing risks. Proceed with analysis or update methodology?"
 
----
-
-### Never Push to Wrong Repository
-
-**Wrong:**
-- Commit code to PM repo
-- Commit PM issues to technical repo
-
-**Right:**
-- Check which repo you're in before committing
-- PM work → PM repo
-- Code/technical docs → technical repo
-
----
-
-### Never Guess Format
-
-**Wrong:**
-- Create milestone file with random format
-
-**Right:**
-- Copy template
-- Fill in template structure
-- Follow naming conventions
+**File Destination:**
+- Tracking/process → PM repo
+- Technical/code → Tech repo
+- Decision record → PM repo
+- Milestone/issue → PM repo
 
 ---
 
-## 🤖 For AI Agents: Quick Reference
+## 📚 Templates
 
-### When User Says "Build Feature X"
+**Copy from:**
+- `milestones/_TEMPLATE.md` → new milestone
+- `issues/_TEMPLATE.md` → new issue
+- `decisions/_TEMPLATE.md` → new decision
+- `meetings/_TEMPLATE.md` → new meeting
 
-**Your Process:**
-
-1. **Read this README** (if not already done)
-2. **Confirm understanding:** "I'll follow SDLC: Requirements → Analysis → Design → Implementation → Testing → Deployment → Review"
-3. **Ask clarifying questions** about requirements
-4. **Create issue #1:** Requirements phase
-5. **Write:** \`docs/requirements/feature-x.md\` in technical repo
-6. **Close issue #1**
-7. **Create issue #2:** Analysis phase
-8. **Write:** \`docs/analysis/feature-x-impact.md\` and \`docs/analysis/feature-x-options.md\`
-9. **Write:** \`decisions/NNN-feature-x-approach.md\` in PM repo
-10. **Close issue #2**
-11. **Continue through all 7 phases**
-
-### When User Says "Skip Analysis"
-
-**Your Response:**
-"Analysis phase is mandatory per your methodology (README.md Section: SDLC Phases). It prevents choosing wrong approach and missing risks. Should I proceed with analysis, or would you like to update your methodology?"
-
-### When You're Unsure Where a File Goes
-
-**Decision Tree:**
-- Is it tracking work/process? → PM repo
-- Is it technical/product documentation? → Technical repo
-- Is it code? → Technical repo
-- Is it a decision record? → PM repo
-- Is it a milestone/issue? → PM repo
+**Never edit templates directly.**
 
 ---
 
-## 📚 Related Documents
+## 🔄 Version History
 
-### In This Repository (PM)
-- Templates in each folder (\`_TEMPLATE.md\` files)
-- \`overview/project-board.md\` - Current project status
-- \`milestones/milestone-N.md\` - Individual milestone plans
-
-### In Technical Repository
-- \`clinic-emr/README.md\` - Product overview
-- \`clinic-emr/docs/\` - All technical documentation
-- \`clinic-emr/docs/PM_WORKFLOW_TEMPLATE.md\` - Detailed PM workflow (supplementary)
-
-### External Links
-- Technical repo: https://github.com/Awlsway/clinic-emr
-- PM repo: https://github.com/Awlsway/clinic-emr-pm (this repo)
-
----
-
-## 📞 Questions?
-
-If this README doesn't answer your question:
-
-**For AI Agents:**
-- Ask the user for clarification
-- Reference specific section of this README
-- Propose approach following methodology
-
-**For Human Collaborators:**
-- Open an issue in this repo (PM repo)
-- Tag with "question" label
-- Reference section of README that's unclear
-
----
-
-## 🔄 Document Version History
+**v1.1 (2026-11-25):**
+- Added file naming convention (MS3+ with SDLC prefix)
+- Added commit & push strategy (hybrid approach)
+- Updated for Milestone 3 workflow
 
 **v1.0 (2026-11-21):**
 - Initial version
 - Established SDLC methodology
 - Defined two-repository structure
-- Created template formats
-- Added workflow examples
 
 ---
 
-**End of README**
+**End of Methodology Documentation**
 
-**Remember:** This methodology is designed for consistency, quality, and scalability. Following it ensures every feature is properly analyzed, designed, tested, and documented.
-
-**For AI Agents:** Always start by reading this document. Always follow SDLC phases. Always document your work. Always maintain quality standards.
+For detailed examples and full templates, see individual `_TEMPLATE.md` files in each folder.
